@@ -1,3 +1,4 @@
+great[text,geo] @ git+https://github.com/azmkto/GREAT-Tools.git
 pandas>=2.0.0
 geopandas>=0.14.0
 matplotlib>=3.7.0

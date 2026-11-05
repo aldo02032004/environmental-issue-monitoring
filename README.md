@@ -24,37 +24,23 @@ Pipeline Python untuk memantau isu lingkungan di Indonesia dari data media (beri
 
 ```
 environmental-issue-monitoring/
-├── README.md
+├── environmental-issue-monitoring.ipynb   # seluruh pipeline, 7 cell
 ├── requirements.txt
-└── visual_report.py
+└── README.md
 ```
 
-## Setup
+## Cara Pakai (Google Colab)
 
-```bash
-git clone https://github.com/USERNAME/environmental-issue-monitoring.git
-cd environmental-issue-monitoring
-pip install -r requirements.txt
-```
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aldo02032004/environmental-issue-monitoring/blob/main/environmental-issue-monitoring.ipynb)
 
-### Catatan penting
+1. Buka notebook lewat tombol di atas.
+2. Di **CELL 2**, isi variabel `SOURCE` dengan link Google Sheets/Drive (akses *Anyone with the link*) atau path file `.xlsx`.
+3. Pastikan data punya kolom: `No`, `Headline`, `Mentions`, `Date`, `Link`, `Sentiment`, `Author`.
+4. `Runtime → Run all`. Hasilnya dashboard peta + bar chart, tabel top isu per pulau & media sosial, dan laporan kata yang belum tercakup klasifikasi.
 
-Script ini bergantung pada library internal `great` (klasifikasi isu, resolver lokasi, normalisasi slang) milik institusi tempat project ini dikembangkan. Library tersebut **privat, tidak disertakan di repo ini**. Untuk menjalankan pipeline secara utuh, kamu perlu:
+Tidak perlu token atau API key. Klasifikasi isu, resolver lokasi (`resolve_frame`), dan normalisasi slang berasal dari library [GREAT-Tools](https://github.com/azmkto/GREAT-Tools) yang publik dan di-install otomatis di CELL 1.
 
-1. Implementasi sendiri fungsi setara: `classify_issue(text)`, `resolve_frame(df, location_col, text_cols)`, `normalize_slang(text)`, plus dictionary `PROVINCE_FIX`, `GEO_FIX`, `PULAU_MAP`
-2. Atau gunakan script ini sebagai referensi arsitektur pipeline (cleaning → klasifikasi → visualisasi)
-
-Fungsi `prepare_data()` juga perlu diisi sesuai kebutuhan (umumnya: hitung `start_date`/`end_date` dari kolom `Date` di dataset).
-
-## Cara Pakai
-
-1. Buka `visual_report.py`, isi variabel `SOURCE` dengan link Google Sheets/Drive (akses "Anyone with the link") atau path file `.xlsx` lokal
-2. Pastikan kolom data punya: `No`, `Headline`, `Mentions`, `Date`, `Link`, `Sentiment`, `Author`
-3. Jalankan script:
-   ```bash
-   python visual_report.py
-   ```
-4. Output: dashboard peta + bar chart (ditampilkan via matplotlib), plus tabel top isu per pulau & media sosial (dicetak ke console)
+Untuk dijalankan di luar Colab: `pip install -r requirements.txt`, lalu buka notebook di Jupyter.
 
 ## Contoh Output
 
