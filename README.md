@@ -2,7 +2,7 @@
 
 Turn a raw export of Indonesian news and social-media mentions into a one-page picture of **which environmental issues are discussed, and where**: issue categories, province and island, a choropleth map, and the top issues with source links.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aldo02032004/environmental-issue-monitoring/blob/main/environmental-issue-monitoring.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aldo02032004/environmental-issue-monitoring/blob/main/environmental_issue_monitoring.ipynb)
 
 ![Dashboard: map, national issue distribution, cases per island](docs/dashboard_overview.png)
 
@@ -32,14 +32,13 @@ What the run shows:
 3. **Classify issues**: rule-based classification into environmental issue categories after slang normalisation, with a geo-gate that marks foreign news as noise.
 4. **Locate**: detect province and island from free text with a gazetteer-based resolver. Mentions that name only an island are spread proportionally over its provinces.
 5. **Visualise**: a choropleth map of Indonesia, national and per-island bar charts, the top issue broken down by province, and tables of the top issues per island (news) and on social media, with source links.
-6. **QA**: list frequent words in unclassified documents and unrecognised place names, to improve the rules over time.
 
 The two dashboards count slightly differently. The first leaves out nationwide news that cannot be placed on the map, while the second keeps it. The notebook explains this next to each chart.
 
 ## Quick start (Google Colab)
 
 1. Open the notebook with the badge above.
-2. In **CELL 2**, set `SOURCE` to your Google Sheets / Drive link (shared as *Anyone with the link*) or an `.xlsx` path.
+2. In step **2. Load data**, set `SOURCE` to your Google Sheets / Drive link (shared as *Anyone with the link*) or an `.xlsx` path.
 3. `Runtime → Run all`.
 
 No API key or token is needed. Running outside Colab: `pip install -r requirements.txt`, then open the notebook in Jupyter.
@@ -56,7 +55,7 @@ Python · pandas · GeoPandas · Matplotlib · [GREAT-Tools](https://github.com/
 
 ```
 environmental-issue-monitoring/
-├── environmental-issue-monitoring.ipynb   # full pipeline with saved outputs
+├── environmental_issue_monitoring.ipynb   # full pipeline with saved outputs
 ├── docs/                                  # dashboard images used in this README
 ├── requirements.txt
 └── LICENSE
@@ -64,7 +63,7 @@ environmental-issue-monitoring/
 
 ## Limitations
 
-- Issue classification is rule-based: fast and transparent, but new phrasing needs new rules (the QA cell helps find them).
+- Issue classification is rule-based: fast and transparent, but new phrasing needs new rules.
 - Location comes from the text, not from where the author is, so national news without a place name cannot be mapped.
 - The example covers a single day; trends need a longer export.
 
